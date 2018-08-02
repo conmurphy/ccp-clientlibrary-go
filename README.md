@@ -434,7 +434,14 @@ type Cluster struct {
 	MasterVIP                  *string        
 	MasterMACAddresses         *[]string      
 	ClusterHealthStatus        *string       
-	AuthList                   *[]string         
+	AuthList                   *[]string 
+	IsHarborEnabled            *bool           
+	HarborAdminServerPassword  *string        
+	HarborRegistrySize         *string        
+	LoadBalanderIPNum          *int64          
+	IsIstioEnabled             *bool          
+	WorkerNodePool             *WorkerNodePool  
+	MasterNodePool             *MasterNodePool  
 }
 
 type Label struct {
@@ -493,6 +500,18 @@ type VsphereClientConfig struct {
 	Port     		   *int64  
 	Username 		   *string  
 	Password 		   *string  
+}
+
+type WorkerNodePool struct {
+	VCPUs   		   *int64   
+	Memory  		   *int64   
+	Template		   *string  
+}
+
+type MasterNodePool struct {
+	VCPUs    		   *int64   
+	Memory   		   *int64   
+	Template 		   *string  
 }
 ```
 
@@ -631,10 +650,7 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error)
 * Datacenter
 * Cluster
 * Datastore
-* Template
 * Workers
-* VCPUs
-* Memory
 * SSHUser
 * Type
 * Masters
@@ -650,17 +666,38 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error)
   * Name 
   * Status
   * Details
+* IsHarborEnabled         
+* LoadBalanderIPNum                
+* IsIstioEnabled             
+* WorkerNodePool    
+  * VCPUs    
+  * Memory  
+  * Template 
+* MasterNodePool           
+  * VCPUs    
+  * Memory  
+  * Template 
   
 ##### Example
 ```go
+
+workerNodePool := ccp.WorkerNodePool{
+  VCPUs:    ccp.Int64(2),
+  Memory:  ccp.Int64(16384),
+  Template: ccp.String("ccp-tenant-image-1.10.1-1.4.0"),
+}
+
+masterNodePool := ccp.MasterNodePool{
+  VCPUs:    ccp.Int64(2),
+  Memory:  ccp.Int64(16384),
+  Template: ccp.String("ccp-tenant-image-1.10.1-1.4.0"),
+}
  
 networkPlugin := ccp.NetworkPlugin{
   Name:    ccp.String("contiv-vpp"),
   Status:  ccp.String(""),
   Details: ccp.String("{\"pod_cidr\":\"192.168.0.0/16\"}"),
 }
-
-
 	
 provider := ccp.Provider{
   VsphereDataCenter:       ccp.String("ccp-lab"),
@@ -691,13 +728,16 @@ newCluster := ccp.Cluster{
   Template:     	    ccp.String("ccp-tenant-image-1.10.1-1.1.0.ova"),
   Masters:      	    ccp.Int64(1),
   Workers:      	    ccp.Int64(2),
-  VCPUs:        	    ccp.Int64(2),
-  Memory:      	    	    ccp.Int64(16384),
   SSHUser:      	    ccp.String("ccpuser"),
   Type:         	    ccp.Int64(1),
   DeployerType: 	    ccp.String("kubeadm"),
   Deployer: 		    &deployer,
   NetworkPlugin:            &networkPlugin,
+  IsHarborEnabled: 	    ccp.Bool(false),	    
+  LoadBalanderIPNum: 	    ccp.Int64(1),                
+  IsIstioEnabled: 	    ccp.Bool(false),
+  WorkerNodePool:           &workerNodePool,
+  MasterNodePool:           &masterNodePool,
 }
 
 cluster, err := client.AddCluster(&newCluster)
