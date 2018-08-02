@@ -2,7 +2,7 @@
 
 This is a Go Client Library used for accessing Cisco Container Platform (CCP). 
 
-It is currently a __Proof of Concept__ and has been developed and tested against Cisco Container Platform 1.1 with Go version 1.10
+It is currently a __Proof of Concept__ and has been developed and tested against Cisco Container Platform 1.4 with Go version 1.10
 
 Table of Contents
 =================
