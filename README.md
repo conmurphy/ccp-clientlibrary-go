@@ -380,7 +380,7 @@ if err != nil {
 #### PatchUser
 
 ```go
-func (s *Client) AddUser(user *User) (*User, error) {
+func (s *Client) PatchUser(user *User) (*User, error) {
 ```
 
 ##### __Required Fields__
@@ -409,6 +409,21 @@ if err != nil {
   username := *user.Username
   role := *user.Role
   fmt.Println("Username: " + username + ", Role: " + role)
+}
+```
+
+#### DeleteUser
+
+```go
+func (s *Client) DeleteUser(username string) error {
+```
+  
+##### Example
+```go
+err := client.DeleteUser("ccp_sdk")
+
+if err != nil {
+  fmt.Println(err)
 }
 ```
 
