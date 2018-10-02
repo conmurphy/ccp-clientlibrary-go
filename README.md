@@ -353,7 +353,7 @@ func (s *Client) GetUser(username string) (*User, error)
 
 ##### Example
 ```go  
-users, err := client.GetUser("myUsername")
+user, err := client.GetUser("myUsername")
   
 if err != nil {
   fmt.Println(err)
