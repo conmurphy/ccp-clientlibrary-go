@@ -380,7 +380,7 @@ if err != nil {
 #### PatchUser
 
 ```go
-func (s *Client) PatchUser(user *User) (*User, error) {
+func (s *Client) PatchUser(user *User) (*User, error) 
 ```
 
 ##### __Required Fields__
@@ -415,7 +415,7 @@ if err != nil {
 #### DeleteUser
 
 ```go
-func (s *Client) DeleteUser(username string) error {
+func (s *Client) DeleteUser(username string) error 
 ```
   
 ##### Example
@@ -438,6 +438,7 @@ if err != nil {
 - [GetClusterHelmCharts](#getclusterhelmcharts)
 - [AddCluster](#addcluster)
 - [PatchCluster](#patchcluster)
+- [DeleteCluster](#deletecluster)
 
 ```go
 type Cluster struct {
@@ -805,7 +806,7 @@ if err != nil {
 #### PatchCluster
 
 ```go
-func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) {
+func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) 
 ```
 
 ##### __Required Fields__
@@ -833,6 +834,22 @@ if err != nil {
 }
  
 ```
+
+### DeleteCluster
+
+```go
+func (s *Client) DeleteCluster(uuid string) error 
+```
+
+##### Example
+```go
+err = client.DeleteCluster("aaaa-bbbb-cccc-dddd-eeee")
+
+if err != nil {
+  fmt.Println(err)
+}
+```
+
 ### ProviderClientConfigs
 
 - [GetProviderClientConfigs](#getproviderclientconfigs)
