@@ -43,6 +43,37 @@ func (s *Client) GetUsers() ([]User, error) {
 	return data, nil
 }
 
+func (s *Client) GetUser(username string) (*User, error) {
+
+	url := fmt.Sprintf(s.BaseURL + "/2/localusers")
+
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return nil, err
+	}
+	bytes, err := s.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
+	var data []User
+
+	err = json.Unmarshal(bytes, &data)
+	if err != nil {
+		return nil, err
+	}
+
+	users := data
+
+	for _, user := range users {
+
+		if username == *user.Username {
+			return &user, nil
+		}
+	}
+
+	return nil, errors.New("USER NOT FOUND")
+}
+
 func (s *Client) AddUser(user *User) (*User, error) {
 
 	var data User
@@ -125,7 +156,7 @@ func (s *Client) PatchUser(user *User) (*User, error) {
 func (s *Client) DeleteUser(username string) error {
 
 	if username == "" {
-		return errors.New("Username of account to delete required")
+		return errors.New("Username of account to delete is required")
 	}
 
 	url := fmt.Sprintf(s.BaseURL + "/2/localusers/" + username)

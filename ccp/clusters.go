@@ -363,3 +363,23 @@ func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) {
 
 	return cluster, nil
 }
+
+func (s *Client) DeleteCluster(uuid string) error {
+
+	if uuid == "" {
+		return errors.New("Cluster UUID to delete is required")
+	}
+
+	url := fmt.Sprintf(s.BaseURL + "/2/clusters/" + uuid)
+
+	req, err := http.NewRequest("DELETE", url, nil)
+	if err != nil {
+		return err
+	}
+	_, err = s.doRequest(req)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
