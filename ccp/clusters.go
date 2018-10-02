@@ -3,6 +3,7 @@ package ccp
 import (
 	"bytes"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"net/http"
 
@@ -21,7 +22,7 @@ type Cluster struct {
 	Workers                   *int64          `json:"workers,omitempty"  validate:"nonzero"`
 	VCPUs                     *int64          `json:"vcpus,omitempty"  "`
 	Memory                    *int64          `json:"memory,omitempty"  `
-	Type                      *int64          `json:"type,omitempty"   validate:"nonzero"`
+	Type                      *int64          `json:"type,omitempty"  `
 	Masters                   *int64          `json:"masters,omitempty"  validate:"nonzero"`
 	Datacenter                *string         `json:"datacenter,omitempty"  validate:"nonzero"`
 	Cluster                   *string         `json:"cluster,omitempty" validate:"nonzero"`
@@ -301,6 +302,47 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error) {
 	}
 
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(j))
+	if err != nil {
+		return nil, err
+	}
+
+	bytes, err := s.doRequest(req)
+
+	if err != nil {
+		return nil, err
+	}
+
+	err = json.Unmarshal(bytes, &data)
+
+	if err != nil {
+		return nil, err
+	}
+
+	cluster = &data
+
+	return cluster, nil
+}
+
+func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) {
+
+	var data Cluster
+
+	if nonzero(cluster.UUID) {
+		return nil, errors.New("Cluster.UUID is missing")
+	}
+
+	clusterUUID := *cluster.UUID
+
+	url := fmt.Sprintf(s.BaseURL + "/2/clusters/" + clusterUUID)
+
+	j, err := json.Marshal(cluster)
+
+	if err != nil {
+
+		return nil, err
+	}
+
+	req, err := http.NewRequest("PATCH", url, bytes.NewBuffer(j))
 	if err != nil {
 		return nil, err
 	}
