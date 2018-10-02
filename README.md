@@ -2,7 +2,7 @@
 
 This is a Go Client Library used for accessing Cisco Container Platform (CCP). 
 
-It is currently a __Proof of Concept__ and has been developed and tested against Cisco Container Platform 1.4 with Go version 1.10
+It is currently a __Proof of Concept__ and has been developed and tested against Cisco Container Platform 1.5 with Go version 1.10
 
 Table of Contents
 =================
@@ -385,6 +385,7 @@ if err != nil {
 - [GetClusterEnv](#getclusterenv)
 - [GetClusterHelmCharts](#getclusterhelmcharts)
 - [AddCluster](#addcluster)
+- [PatchCluster](#patchcluster)
 
 ```go
 type Cluster struct {
@@ -749,7 +750,37 @@ if err != nil {
 }
  
 ```
+#### PatchCluster
 
+```go
+func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) {
+```
+
+##### __Required Fields__
+* UUID
+* Workers 
+
+##### __Available Fields__
+* Workers
+* LoadBalanderIPNum
+  
+##### Example
+```go
+
+newCluster := ccp.Cluster{
+  UUID: ccp.String("aaaa-bbbb-cccc-dddd-eeee"),
+  Workers: ccp.Int64(3),
+  LoadBalanderIPNum: ccp.Int64(3),
+}	
+cluster, err := client.PatchCluster(&newCluster)
+
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Println("Cluster UUID: " + *cluster.UUID)
+}
+ 
+```
 ### ProviderClientConfigs
 
 - [GetProviderClientConfigs](#getproviderclientconfigs)
