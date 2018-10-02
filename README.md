@@ -310,6 +310,8 @@ func (s *Client) GetHealth() (*Health, error)
 
 - [GetUsers](#getusers)
 - [AddUser](#adduser)
+- [PatchUser](#patchuser)
+- [DeleteUser](#deleteuser)
 
 ```go
 type User struct {
@@ -375,6 +377,56 @@ if err != nil {
 }
 ```
 
+#### PatchUser
+
+```go
+func (s *Client) PatchUser(user *User) (*User, error) 
+```
+
+##### __Required Fields__
+* Username
+
+##### __Available Fields to Patch__
+* Firstname
+* LastName
+* Password
+* Disable
+* Role
+	
+  
+##### Example
+```go
+newUser := ccp.User{
+  Username:  ccp.String("ccp_sdk"),
+  Role:      ccp.String("Devops"),
+}
+
+user, err := client.PatchUser(&newUser)
+
+if err != nil {
+  fmt.Println(err)
+} else {
+  username := *user.Username
+  role := *user.Role
+  fmt.Println("Username: " + username + ", Role: " + role)
+}
+```
+
+#### DeleteUser
+
+```go
+func (s *Client) DeleteUser(username string) error 
+```
+  
+##### Example
+```go
+err := client.DeleteUser("ccp_sdk")
+
+if err != nil {
+  fmt.Println(err)
+}
+```
+
 ### Clusters
 
 - [GetClusters](#getclusters)
@@ -386,6 +438,7 @@ if err != nil {
 - [GetClusterHelmCharts](#getclusterhelmcharts)
 - [AddCluster](#addcluster)
 - [PatchCluster](#patchcluster)
+- [DeleteCluster](#deletecluster)
 
 ```go
 type Cluster struct {
@@ -753,14 +806,14 @@ if err != nil {
 #### PatchCluster
 
 ```go
-func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) {
+func (s *Client) PatchCluster(cluster *Cluster) (*Cluster, error) 
 ```
 
 ##### __Required Fields__
 * UUID
 * Workers 
 
-##### __Available Fields__
+##### __Available Fields To Patch__
 * Workers
 * LoadBalanderIPNum
   
@@ -781,6 +834,22 @@ if err != nil {
 }
  
 ```
+
+### DeleteCluster
+
+```go
+func (s *Client) DeleteCluster(uuid string) error 
+```
+
+##### Example
+```go
+err = client.DeleteCluster("aaaa-bbbb-cccc-dddd-eeee")
+
+if err != nil {
+  fmt.Println(err)
+}
+```
+
 ### ProviderClientConfigs
 
 - [GetProviderClientConfigs](#getproviderclientconfigs)
