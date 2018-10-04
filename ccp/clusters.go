@@ -38,7 +38,7 @@ type Cluster struct {
 	Deployer                  *Deployer       `json:"deployer,omitempty" validate:"nonzero"`
 	KubernetesVersion         *string         `json:"kubernetes_version,omitempty" validate:"nonzero"`
 	ClusterEnvURL             *string         `json:"cluster_env_url,omitempty"`
-	ClusterDa	shboardURL       *string         `json:"cluster_dashboard_url,omitempty"`
+	ClusterDashboardURL       *string         `json:"cluster_dashboard_url,omitempty"`
 	NetworkPlugin             *NetworkPlugin  `json:"network_plugin,omitempty" validate:"nonzero"`
 	CCPPrivateSSHKey          *string         `json:"ccp_private_ssh_key,omitempty"`
 	CCPPublicSSHKey           *string         `json:"ccp_public_ssh_key,omitempty"`
