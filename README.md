@@ -309,6 +309,7 @@ func (s *Client) GetHealth() (*Health, error)
 ### Users
 
 - [GetUsers](#getusers)
+- [GetUser](#getuser)
 - [AddUser](#adduser)
 - [PatchUser](#patchuser)
 - [DeleteUser](#deleteuser)
@@ -342,6 +343,24 @@ func (s *Client) GetUsers() ([]User, error)
       fmt.Printf("%+v\n", *user.Username)
     }
   }
+```
+
+#### GetUser
+
+```go
+func (s *Client) GetUser(username string) (*User, error)
+```
+
+##### Example
+```go  
+user, err := client.GetUser("myUsername")
+  
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Printf("%+v\n", *user.Username)
+  fmt.Printf("%+v\n", *user.Role)
+}
 ```
 
 #### AddUser
