@@ -38,7 +38,7 @@ type Cluster struct {
 	Deployer                  *Deployer       `json:"deployer,omitempty" validate:"nonzero"`
 	KubernetesVersion         *string         `json:"kubernetes_version,omitempty" validate:"nonzero"`
 	ClusterEnvURL             *string         `json:"cluster_env_url,omitempty"`
-	ClusterDashboardURL       *string         `json:"cluster_dashboard_url,omitempty"`
+	ClusterDa	shboardURL       *string         `json:"cluster_dashboard_url,omitempty"`
 	NetworkPlugin             *NetworkPlugin  `json:"network_plugin,omitempty" validate:"nonzero"`
 	CCPPrivateSSHKey          *string         `json:"ccp_private_ssh_key,omitempty"`
 	CCPPublicSSHKey           *string         `json:"ccp_public_ssh_key,omitempty"`
@@ -62,7 +62,7 @@ type Cluster struct {
 	IsHarborEnabled           *bool           `json:"is_harbor_enabled,omitempty" `
 	HarborAdminServerPassword *string         `json:"harbor_admin_server_password,omitempty"`
 	HarborRegistrySize        *string         `json:"harbor_registry_size,omitempty"`
-	LoadBalanderIPNum         *int64          `json:"load_balancer_ip_num,omitempty"  validate:"nonzero" `
+	LoadBalancerIPNum         *int64          `json:"load_balancer_ip_num,omitempty"  validate:"nonzero" `
 	IsIstioEnabled            *bool           `json:"is_istio_enabled,omitempty"   `
 	WorkerNodePool            *WorkerNodePool `json:"worker_node_pool,omitempty"  validate:"nonzero" `
 	MasterNodePool            *MasterNodePool `json:"master_node_pool,omitempty"  validate:"nonzero" `
