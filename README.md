@@ -511,7 +511,7 @@ type Cluster struct {
 	IsHarborEnabled            *bool           
 	HarborAdminServerPassword  *string        
 	HarborRegistrySize         *string        
-	LoadBalanderIPNum          *int64          
+	LoadBalancerIPNum          *int64          
 	IsIstioEnabled             *bool          
 	WorkerNodePool             *WorkerNodePool  
 	MasterNodePool             *MasterNodePool  
@@ -740,7 +740,7 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error)
   * Status
   * Details
 * IsHarborEnabled         
-* LoadBalanderIPNum                
+* LoadBalancerIPNum                
 * IsIstioEnabled             
 * WorkerNodePool    
   * VCPUs    
