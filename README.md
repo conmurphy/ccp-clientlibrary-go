@@ -515,6 +515,15 @@ type Cluster struct {
 	IsIstioEnabled             *bool          
 	WorkerNodePool             *WorkerNodePool  
 	MasterNodePool             *MasterNodePool  
+	Infra                      *Infra 
+}
+
+type Infra struct {
+	Datacenter   *string   
+	Datastore    *string  
+	Cluster      *string   
+	Networks     *[]string
+	ResourcePool *string   
 }
 
 type Label struct {
