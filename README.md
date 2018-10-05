@@ -89,7 +89,6 @@ Example JSON File - newCluster.json
   "vcpus": 2,
   "memory": 16384,
   "type": 1,
-  "deployer_type": "kubeadm",
   "ingress_vip_pool_id": "12345abcd-abcd1234-1234543221",
     "network_plugin": {
       "name": "contiv-vpp",
@@ -482,8 +481,7 @@ type Cluster struct {
 	SSHPassword                *string 
 	SSHKey                     *string 
 	Labels                     *[]Label 
-	Nodes                      *[]Node  
-	DeployerType               *string               
+	Nodes                      *[]Node   
 	Deployer                   *KubeADM              
 	KubernetesVersion          *string               
 	ClusterEnvURL              *string               
@@ -736,7 +734,6 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error)
 * SSHUser
 * Type
 * Masters
-* DeployerType
 * Deployer
   * ProviderType
   * Provider 
@@ -812,7 +809,6 @@ newCluster := ccp.Cluster{
   Workers:      	    ccp.Int64(2),
   SSHUser:      	    ccp.String("ccpuser"),
   Type:         	    ccp.Int64(1),
-  DeployerType: 	    ccp.String("kubeadm"),
   Deployer: 		    &deployer,
   NetworkPlugin:            &networkPlugin,
   IsHarborEnabled: 	    ccp.Bool(false),	    
