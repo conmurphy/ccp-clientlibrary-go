@@ -12,29 +12,29 @@ import (
 
 //ClusterAPIResponse
 type Cluster struct {
-	UUID                      *string         `json:"uuid,omitempty"`
-	ProviderClientConfigUUID  *string         `json:"provider_client_config_uuid,omitempty" validate:"nonzero"`
-	ACIProfileUUID            *string         `json:"aci_profile_uuid,omitempty"`
-	Name                      *string         `json:"name,omitempty"  validate:"nonzero"`
-	Description               *string         `json:"description,omitempty"`
-	ResourcePool              *string         `json:"resource_pool,omitempty"  validate:"nonzero"`
-	Networks                  *[]string       `json:"networks,omitempty"  validate:"nonzero"`
-	Workers                   *int64          `json:"workers,omitempty"  validate:"nonzero"`
-	VCPUs                     *int64          `json:"vcpus,omitempty"  "`
-	Memory                    *int64          `json:"memory,omitempty"  `
-	Type                      *int64          `json:"type,omitempty"  `
-	Masters                   *int64          `json:"masters,omitempty"  validate:"nonzero"`
-	Datacenter                *string         `json:"datacenter,omitempty"  validate:"nonzero"`
-	Cluster                   *string         `json:"cluster,omitempty" validate:"nonzero"`
-	Datastore                 *string         `json:"datastore,omitempty"  validate:"nonzero"`
-	State                     *string         `json:"state,omitempty"`
-	Template                  *string         `json:"template,omitempty"   `
-	SSHUser                   *string         `json:"ssh_user,omitempty"  validate:"nonzero"`
-	SSHPassword               *string         `json:"ssh_password,omitempty"`
-	SSHKey                    *string         `json:"ssh_key,omitempty"   validate:"nonzero"`
-	Labels                    *[]Label        `json:"labels,omitempty"`
-	Nodes                     *[]Node         `json:"nodes,omitempty"`
-	DeployerType              *string         `json:"deployer_type,omitempty"  validate:"nonzero"`
+	UUID                     *string   `json:"uuid,omitempty"`
+	ProviderClientConfigUUID *string   `json:"provider_client_config_uuid,omitempty" validate:"nonzero"`
+	ACIProfileUUID           *string   `json:"aci_profile_uuid,omitempty"`
+	Name                     *string   `json:"name,omitempty"  validate:"nonzero"`
+	Description              *string   `json:"description,omitempty"`
+	Networks                 *[]string `json:"networks,omitempty"  validate:"nonzero"`
+	Datacenter               *string   `json:"datacenter,omitempty"  validate:"nonzero"`
+	Datastore                *string   `json:"datastore,omitempty"  validate:"nonzero"`
+	Cluster                  *string   `json:"cluster,omitempty" validate:"nonzero"`
+	ResourcePool             *string   `json:"resource_pool,omitempty"  validate:"nonzero"`
+	Workers                  *int64    `json:"workers,omitempty"  validate:"nonzero"`
+	VCPUs                    *int64    `json:"vcpus,omitempty"  "`
+	Memory                   *int64    `json:"memory,omitempty"  `
+	Type                     *int64    `json:"type,omitempty"  `
+	Masters                  *int64    `json:"masters,omitempty"  validate:"nonzero"`
+	State                    *string   `json:"state,omitempty"`
+	Template                 *string   `json:"template,omitempty"   `
+	SSHUser                  *string   `json:"ssh_user,omitempty"  validate:"nonzero"`
+	SSHPassword              *string   `json:"ssh_password,omitempty"`
+	SSHKey                   *string   `json:"ssh_key,omitempty"   validate:"nonzero"`
+	Labels                   *[]Label  `json:"labels,omitempty"`
+	Nodes                    *[]Node   `json:"nodes,omitempty"`
+	//DeployerType              *string         `json:"deployer_type,omitempty"  validate:"nonzero"`
 	Deployer                  *Deployer       `json:"deployer,omitempty" validate:"nonzero"`
 	KubernetesVersion         *string         `json:"kubernetes_version,omitempty" validate:"nonzero"`
 	ClusterEnvURL             *string         `json:"cluster_env_url,omitempty"`
@@ -66,6 +66,15 @@ type Cluster struct {
 	IsIstioEnabled            *bool           `json:"is_istio_enabled,omitempty"   `
 	WorkerNodePool            *WorkerNodePool `json:"worker_node_pool,omitempty"  validate:"nonzero" `
 	MasterNodePool            *MasterNodePool `json:"master_node_pool,omitempty"  validate:"nonzero" `
+	Infra                     *Infra          `json:"infra,omitempty"  validate:"nonzero" `
+}
+
+type Infra struct {
+	Datacenter   *string   `json:"datacenter,omitempty"  validate:"nonzero"`
+	Datastore    *string   `json:"datastore,omitempty"  validate:"nonzero"`
+	Cluster      *string   `json:"cluster,omitempty" validate:"nonzero"`
+	Networks     *[]string `json:"networks,omitempty"  validate:"nonzero"`
+	ResourcePool *string   `json:"resource_pool,omitempty"  validate:"nonzero"`
 }
 
 type Label struct {
