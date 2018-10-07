@@ -593,8 +593,11 @@ type MasterNodePool struct {
 }
 ```
 
+#### Attribute Descriptions
 
-
+ Optional | Attribute | Description | Type | 
+------------ | ------------- | ------------- | ------------- 
+ | | | |
 #### GetClusters
 
 ```go
