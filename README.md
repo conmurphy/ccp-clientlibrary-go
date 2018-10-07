@@ -315,14 +315,6 @@ func (s *Client) GetHealth() (*Health, error)
 - [PatchUser](#patchuser)
 - [DeleteUser](#deleteuser)
 
-#### Field Explanations
-
-Field | Description 
------------- | -------------
-Role | Role of the user - either Administrator or Devops
-Disable | Whether or not the user account is enabled or disabled
-	
-
 ```go
 type User struct {
 	Username  *string 
@@ -334,6 +326,14 @@ type User struct {
 }
 ```
 
+#### Field Explanations
+
+Field | Description 
+------------ | -------------
+Role | Role of the user - either Administrator or Devops
+Disable | Whether or not the user account is enabled or disabled
+	
+	
 #### GetUsers
 
 ```go
