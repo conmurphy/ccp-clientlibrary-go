@@ -616,9 +616,9 @@ Cluster	|	Template	|	The Vsphere template from which the nodes will be deployed.
 Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
 Cluster	|	SSHPassword	|	Password for the SSH user specified above
 Cluster	|	SSHKey	|	Key for the SSH user specified above
-Cluster	|	Labels	|	
-Cluster	|	Nodes	|	
-Cluster	|	Deployer	|	
+Cluster	|	Labels	|	Labels configuration - See below
+Cluster	|	Nodes	|	Node configuration - See below
+Cluster	|	Deployer	|	Deployer configuration - See below
 Cluster	|	Kubernetes Version	|	Version of Kubeternes to use
 Cluster	|	ClusterEnvURL	|	
 Cluster	|	ClusterDashboardURL	|	
@@ -642,14 +642,13 @@ Cluster	|	MasterVIP	|
 Cluster	|	MasterMACAddresses	|	
 Cluster	|	ClusterHealthStatus	|	
 Cluster	|	AuthList	|	
-Cluster	|	IsHarborEnabled	|	
+Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False
 Cluster	|	HarborAdminServerPassword	|	
 Cluster	|	HarborRegistrySize	|	
-Cluster	|	LoadBalancerIPNum	|	
-Cluster	|	IsIstioEnabled	|	
-Cluster	|	WorkerNodePool	|	
-Cluster	|	MasterNodePool	|	
-Cluster	|		|	
+Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled this should be 3 or greater
+Cluster	|	IsIstioEnabled	|	Whether or not Istio is enabled - True or False
+Cluster	|	WorkerNodePool	|	Worker Node configuration - See below 
+Cluster	|	MasterNodePool	|	Master Node configuration - See below 
 Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
 Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed      
 Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed      
@@ -664,7 +663,7 @@ Node	|	PrivateIP	|
 Node	|	IsMaster	|	
 Node	|	State	|	
 Node	|	CloudInitData	|	
-Node	|	KubernetesVersion	|	
+Node	|	KubernetesVersion	|	Version of Kubeternes running
 Node	|	ErrorLog	|	
 Node	|	Template	|	
 Node	|	MacAddresses	|	
@@ -693,12 +692,12 @@ VsphereClientConfig	|	IP	|
 VsphereClientConfig	|	Port	|	
 VsphereClientConfig	|	Username	|	
 VsphereClientConfig	|	Password	|	
-WorkerNodePool	|	VCPUs	|	
-WorkerNodePool	|	Memory	|	
-WorkerNodePool	|	Template	|	
-MasterNodePool	|	VCPUs	|	
-MasterNodePool	|	Memory	|	
-MasterNodePool	|	Template	|	
+WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use
+WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use
+WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use
+MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	
 	
 #### GetClusters
 
