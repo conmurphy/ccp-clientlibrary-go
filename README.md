@@ -597,23 +597,65 @@ type MasterNodePool struct {
 
 #### Field Explanations
 
- Field | Optional | Description 
------------- | ------------- | -------------
- UUID | Computed | UUID of the  cluster 
- ProviderClientConfigUUID | Required |UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
- ACIProfileUUID	|	Optional	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
-Name	|	Required	|	Name of the new cluster
-Description	|	Optional	|	Description for the new cluster
-Workers	|	Required	|	Number of worker nodes. Must be greater than 0
-Masters	|	Required	|	Number of master nodes. As of release 1.5 this value should be 1
-ResourcePool	|	Required	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
-Networks	|	Required	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
-Type	|	Required	|	As of CCP 1.5 this should be set to 1
-Datacenter	|	Required	|	Vsphere datacenter in which the nodes will be deployed
-Cluster	|	Required	|	Vsphere cluster on which the nodes will be deployed      
-Datastore	|	Required	|	Vsphere datastore on which the nodes will be deployed      
-Template	|	Optional	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
-SSHUser	|	Required	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
+Type | Field | Optional | Description 
+------------ | ------------ | ------------- | -------------
+Cluster	UUID	|	Computed	|	UUID of the  cluster 
+	ProviderClientConfigUUID	|	Required	|	|UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
+	ACIProfileUUID	|	Optional	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
+	Name	|	Required	|	Name of the new cluster
+	Description	|	Optional	|	Description for the new cluster
+	Workers	|	Required	|	Number of worker nodes. Must be greater than 0
+	Masters	|	Required	|	Number of master nodes. As of release 1.5 this value should be 1
+	ResourcePool	|	Required	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
+	Networks	|	Required	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+	Type	|	Required	|	As of CCP 1.5 this should be set to 1
+	Datacenter	|	Required	|	Vsphere datacenter in which the nodes will be deployed
+	Cluster	|	Required	|	Vsphere cluster on which the nodes will be deployed      
+	Datastore	|	Required	|	Vsphere datastore on which the nodes will be deployed      
+	Template	|	Optional	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+	SSHUser	|	Required	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
+	SSHPassword	|	Required	|	Password for the SSH user specified above
+	SSHKey	|	Required	|	Key for the SSH user specified above
+	Labels	|	Optional	|	
+	Nodes	|	Optional	|	
+	Deployer	|		|	
+	Kubernetes Version	|	Required	|	Version of Kubeternes to use
+	ClusterEnvURL	|		|	
+	ClusterDashboardURL	|		|	
+	NetworkPlugin	|	Required	|	
+	CCPPrivateSSHKey	|		|	
+	CCPPublicSSHKey	|		|	
+	NTPPools	|		|	
+	NTPServers	|		|	
+	IsControlCluster	|		|	
+	IsAdopt	|		|	
+	RegistriesSelfSigned	|		|	
+	RegistriesInsecure	|		|	
+	RegistriesRootCA	|		|	
+	IngressVIPPoolID	|	Required/Optional	|	Required if using Load Balancer IP
+	IngressVIPAddressID	|	Computed	|	
+	IngressVIPs	|	Computed	|	
+	KeepaliveVRID	|		|	
+	HelmCharts	|	Optional	|	
+	MasterVIPAddressID	|		|	
+	MasterVIP	|		|	
+	MasterMACAddresses	|		|	
+	ClusterHealthStatus	|		|	
+	AuthList	|		|	
+	IsHarborEnabled	|	Optional	|	
+	HarborAdminServerPassword	|		|	
+	HarborRegistrySize	|		|	
+	LoadBalancerIPNum	|		|	
+	IsIstioEnabled	|	Optional	|	
+	WorkerNodePool	|	Required	|	
+	MasterNodePool	|	Required	|	
+		|		|	
+Infra	Datacenter	|	Required	|	Vsphere datacenter in which the nodes will be deployed
+	Datastore	|	Required	|	Vsphere cluster on which the nodes will be deployed      
+	Cluster	|	Required	|	Vsphere datastore on which the nodes will be deployed      
+	Networks	|	Required	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+	ResourcePool	|	Required	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```     
+ 
  
 #### GetClusters
 
