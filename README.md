@@ -307,15 +307,24 @@ func (s *Client) GetHealth() (*Health, error)
 
 ### Users
 
+[Field Explanations](#field-explanations)
+
 - [GetUsers](#getusers)
 - [GetUser](#getuser)
 - [AddUser](#adduser)
 - [PatchUser](#patchuser)
 - [DeleteUser](#deleteuser)
 
+#### Field Explanations
+
+Field | Description 
+------------ | -------------
+Role | Role of the user - either Administrator or Devops
+Disable | Whether or not the user account is enabled or disabled
+	
+
 ```go
 type User struct {
-	Token     *string 
 	Username  *string 
 	Disable   *bool  
 	Role      *string 
