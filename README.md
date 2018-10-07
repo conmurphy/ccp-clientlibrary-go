@@ -600,7 +600,7 @@ type MasterNodePool struct {
 Type | Field | Optional | Description 
 ------------ | ------------ | ------------- | -------------
 Cluster	UUID	|	Computed	|	UUID of the  cluster 
-	ProviderClientConfigUUID	|	Required	|	|UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
+	ProviderClientConfigUUID	|	Required	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
 	ACIProfileUUID	|	Optional	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
 	Name	|	Required	|	Name of the new cluster
 	Description	|	Optional	|	Description for the new cluster
@@ -654,9 +654,9 @@ Infra	Datacenter	|	Required	|	Vsphere datacenter in which the nodes will be depl
 	Datastore	|	Required	|	Vsphere cluster on which the nodes will be deployed      
 	Cluster	|	Required	|	Vsphere datastore on which the nodes will be deployed      
 	Networks	|	Required	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
-	ResourcePool	|	Required	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```     
- 
- 
+	ResourcePool	|	Required	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
+
+
 #### GetClusters
 
 ```go
