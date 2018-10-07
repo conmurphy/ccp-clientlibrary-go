@@ -447,7 +447,8 @@ if err != nil {
 
 ### Clusters
 
-- [Field Explanations](#fieldexplanations)
+- [Field Explanations](#field-explanations)
+
 - [GetClusters](#getclusters)
 - [GetCluster](#getcluster)
 - [GetClusterHealth](#getclusterhealth)
