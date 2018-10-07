@@ -460,24 +460,22 @@ if err != nil {
 
 ```go
 type Cluster struct {
-	UUID                       *string  
-	ProviderClientConfigUUID   *string 
-	ACIProfileUUID             *string
-	Name                       *string 
-	Description                *string  
-	Workers                    *int64  
-	Masters                    *int64
-	ResourcePool               *string               
-	Networks                   *[]string            
-	VCPUs                      *int64               
-	Memory                     *int64                
-	Type                       *int64          
-	Datacenter                 *string            
-	Cluster                    *string              
-	Datastore                  *string          
+	UUID                       *string // [Computed] UUID of the  cluster 
+	ProviderClientConfigUUID   *string // [Required] UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
+	ACIProfileUUID             *string // [Optional] UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
+	Name                       *string // [Required] Name of the new cluster
+	Description                *string // [Optional] Description for the new cluster
+	Workers                    *int64  // [Required] Number of worker nodes. Must be greater than 0
+	Masters                    *int64  // [Required] Number of master nodes. As of release 1.5 this value should be 1
+	ResourcePool               *string // [Required] The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```           
+	Networks                   *[]string // [Required] Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+	Type                       *int64 // [Required] As of CCP 1.5 this should be set to 1
+	Datacenter                 *string // [Required] Vsphere datacenter in which the nodes will be deployed
+	Cluster                    *string // [Required] Vsphere cluster on which the nodes will be deployed             
+	Datastore                  *string // [Required] Vsphere datastore on which the nodes will be deployed      
 	State                      *string 
-	Template                   *string
-	SSHUser                    *string 
+	Template                   *string // [Optional] The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+	SSHUser                    *string // [Required] Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
 	SSHPassword                *string 
 	SSHKey                     *string 
 	Labels                     *[]Label 
