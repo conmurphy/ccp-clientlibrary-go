@@ -447,6 +447,7 @@ if err != nil {
 
 ### Clusters
 
+- [Field Explanations](#fieldexplanations)
 - [GetClusters](#getclusters)
 - [GetCluster](#getcluster)
 - [GetClusterHealth](#getclusterhealth)
@@ -460,8 +461,8 @@ if err != nil {
 
 ```go
 type Cluster struct {
-	UUID                       *string // [Computed] UUID of the  cluster 
-	ProviderClientConfigUUID   *string // [Required] UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
+	UUID                       *string // 
+	ProviderClientConfigUUID   *string // 
 	ACIProfileUUID             *string // [Optional] UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
 	Name                       *string // [Required] Name of the new cluster
 	Description                *string // [Optional] Description for the new cluster
@@ -593,11 +594,12 @@ type MasterNodePool struct {
 }
 ```
 
-#### Attribute Descriptions
+#### Field Explanations
 
- Optional | Attribute | Description | Type | 
------------- | ------------- | ------------- | ------------- 
- | | | |
+ Optional | Attribute | Description 
+------------ | ------------- | -------------
+ UUID | Computed | UUID of the  cluster 
+ ProviderClientConfigUUID | Required |UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
 #### GetClusters
 
 ```go
