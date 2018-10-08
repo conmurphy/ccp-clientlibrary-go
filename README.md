@@ -604,101 +604,101 @@ type MasterNodePool struct {
 
 Type | Field | Description 
 ------------ | ------------ | -------------
-Cluster	|	UUID	|	UUID of the  cluster  	<br>
-Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  	<br>
-Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function  	<br>
-Cluster	|	Name	|	Name of the new cluster  	<br>
-Cluster	|	Description	|	Description for the new cluster  	<br>
-Cluster	|	Workers	|	Number of worker nodes. Must be greater than 0  	<br>
-Cluster	|	Masters	|	Number of master nodes. As of release 1.5 this value should be 1  	<br>
-Cluster	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```      	<br>
-Cluster	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      	<br>
-Cluster	|	Type	|	As of CCP 1.5 this should be set to 1	<br>
-Cluster	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed	<br>
-Cluster	|	Cluster	|	Vsphere cluster on which the nodes will be deployed      	<br>
-Cluster	|	Datastore	|	Vsphere datastore on which the nodes will be deployed      	<br>
-Cluster	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	<br>
-Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting	<br>
-Cluster	|	SSHPassword	|	Password for the SSH user specified above	<br>
-Cluster	|	SSHKey	|	Key for the SSH user specified above	<br>
-Cluster	|	Labels	|	Labels configuration - See below	<br>
-Cluster	|	Nodes	|	Node configuration - See below	<br>
-Cluster	|	Deployer	|	Deployer configuration - See below	<br>
-Cluster	|	Kubernetes Version	|	Version of Kubeternes to use	<br>
-Cluster	|	ClusterEnvURL	|		<br>
-Cluster	|	ClusterDashboardURL	|	URL for the K8s dashboard of this cluster	<br>
-Cluster	|	NetworkPlugin	|	Network plugin configuration - See below	<br>
-Cluster	|	CCPPrivateSSHKey	|		<br>
-Cluster	|	CCPPublicSSHKey	|		<br>
-Cluster	|	NTPPools	|	NTP pools configrued for the cluster	<br>
-Cluster	|	NTPServers	|	NTP servers configured within the pools mentioned above	<br>
-Cluster	|	IsControlCluster	|	Whether or not this cluster is the CCP control cluster. For tenant clusters this should be false	<br>
-Cluster	|	IsAdopt	|		<br>
-Cluster	|	RegistriesSelfSigned	|		<br>
-Cluster	|	RegistriesInsecure	|		<br>
-Cluster	|	RegistriesRootCA	|		<br>
-Cluster	|	IngressVIPPoolID	|	UUID of the Ingress VIP Pool used for the cluster. Required if using Load Balancer IP	<br>
-Cluster	|	IngressVIPAddressID	|	UUID of the Ingress VIP address 	<br>
-Cluster	|	IngressVIPs	|	Individual VIP addresses assigned to the cluster	<br>
-Cluster	|	KeepaliveVRID	|		<br>
-Cluster	|	HelmCharts	|	List of helm charts - See below	<br>
-Cluster	|	MasterVIPAddressID	|	UUID of the Master VIP address	<br>
-Cluster	|	MasterVIP	|	VIP address assigned to the master tenant cluster node	<br>
-Cluster	|	MasterMACAddresses	|	MAC addresses of the interfaces on the master tenant cluster node	<br>
-Cluster	|	AuthList	|		<br>
-Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False	<br>
-Cluster	|	HarborAdminServerPassword	|		<br>
-Cluster	|	HarborRegistrySize	|		<br>
-Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled this should be 3 or greater	<br>
-Cluster	|	IsIstioEnabled	|	Whether or not Istio is enabled - True or False	<br>
-Cluster	|	WorkerNodePool	|	Worker Node configuration - See below 	<br>
-Cluster	|	MasterNodePool	|	Master Node configuration - See below 	<br>
-Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed	<br>
-Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed      	<br>
-Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed      	<br>
-Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      	<br>
-Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    	<br>
-Label	|	Key	|		<br>
-Label	|	Value	|		<br>
-Node	|	UUID	|	UUID of the tenant cluster node	<br>
-Node	|	Name	|	Name of the tenant cluster node	<br>
-Node	|	PublicIP	|	Public IP of the tenant cluster node	<br>
-Node	|	PrivateIP	|	Private IP of the tenant cluster node	<br>
-Node	|	IsMaster	|	Whether or not the tenant cluster node is the K8s master	<br>
-Node	|	State	|	The state of the node - when everything is working correctly this sholud be "READY"	<br>
-Node	|	CloudInitData	|		<br>
-Node	|	KubernetesVersion	|	Version of Kubeternes running	<br>
-Node	|	ErrorLog	|		<br>
-Node	|	Template	|	The Vsphere template from which the node was deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	<br>
-Node	|	MacAddresses	|	MAC addresses of the interfaces on the tenant cluster node	<br>
-Deployer	|	ProxyCMD	|		<br>
+Cluster	|	UUID	|	UUID of the  cluster  <br>
+Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  <br>
+Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function  <br>
+Cluster	|	Name	|	Name of the new cluster  <br>
+Cluster	|	Description	|	Description for the new cluster  <br>
+Cluster	|	Workers	|	Number of worker nodes. Must be greater than 0  <br>
+Cluster	|	Masters	|	Number of master nodes. As of release 1.5 this value should be 1  <br>
+Cluster	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```  <br>
+Cluster	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```  <br>
+Cluster	|	Type	|	As of CCP 1.5 this should be set to 1  <br>
+Cluster	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed  <br>
+Cluster	|	Cluster	|	Vsphere cluster on which the nodes will be deployed  <br>
+Cluster	|	Datastore	|	Vsphere datastore on which the nodes will be deployed  <br>
+Cluster	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  <br>
+Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting  <br>
+Cluster	|	SSHPassword	|	Password for the SSH user specified above  <br>
+Cluster	|	SSHKey	|	Key for the SSH user specified above  <br>
+Cluster	|	Labels	|	Labels configuration - See below  <br>
+Cluster	|	Nodes	|	Node configuration - See below  <br>
+Cluster	|	Deployer	|	Deployer configuration - See below  <br>
+Cluster	|	Kubernetes Version	|	Version of Kubeternes to use  <br>
+Cluster	|	ClusterEnvURL	|  <br>
+Cluster	|	ClusterDashboardURL	|	URL for the K8s dashboard of this cluster  <br>
+Cluster	|	NetworkPlugin	|	Network plugin configuration - See below  <br>
+Cluster	|	CCPPrivateSSHKey	|  <br>
+Cluster	|	CCPPublicSSHKey	|  <br>
+Cluster	|	NTPPools	|	NTP pools configrued for the cluster  <br>
+Cluster	|	NTPServers	|	NTP servers configured within the pools mentioned above  <br>
+Cluster	|	IsControlCluster	|	Whether or not this cluster is the CCP control cluster. For tenant clusters this should be false  <br>
+Cluster	|	IsAdopt	|  <br>
+Cluster	|	RegistriesSelfSigned	|  <br>
+Cluster	|	RegistriesInsecure	|  <br>
+Cluster	|	RegistriesRootCA	|  <br>
+Cluster	|	IngressVIPPoolID	|	UUID of the Ingress VIP Pool used for the cluster. Required if using Load Balancer IP  <br>
+Cluster	|	IngressVIPAddressID	|	UUID of the Ingress VIP address  <br>
+Cluster	|	IngressVIPs	|	Individual VIP addresses assigned to the cluster  <br>
+Cluster	|	KeepaliveVRID	|  <br>
+Cluster	|	HelmCharts	|	List of helm charts - See below  <br>
+Cluster	|	MasterVIPAddressID	|	UUID of the Master VIP address  <br>
+Cluster	|	MasterVIP	|	VIP address assigned to the master tenant cluster node  <br>
+Cluster	|	MasterMACAddresses	|	MAC addresses of the interfaces on the master tenant cluster node  <br>
+Cluster	|	AuthList	|  <br>
+Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False  <br>
+Cluster	|	HarborAdminServerPassword	|  <br>
+Cluster	|	HarborRegistrySize	|  <br>
+Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled this should be 3 or greater  <br>
+Cluster	|	IsIstioEnabled	|	Whether or not Istio is enabled - True or False  <br>
+Cluster	|	WorkerNodePool	|	Worker Node configuration - See below  <br>
+Cluster	|	MasterNodePool	|	Master Node configuration - See below  <br>
+Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed  <br>
+Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed  <br>
+Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed  <br>
+Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```  <br>
+Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```  <br>
+Label	|	Key	|  <br>
+Label	|	Value	|  <br>
+Node	|	UUID	|	UUID of the tenant cluster node  <br>
+Node	|	Name	|	Name of the tenant cluster node  <br>
+Node	|	PublicIP	|	Public IP of the tenant cluster node  <br>
+Node	|	PrivateIP	|	Private IP of the tenant cluster node  <br>
+Node	|	IsMaster	|	Whether or not the tenant cluster node is the K8s master  <br>
+Node	|	State	|	The state of the node - when everything is working correctly this sholud be "READY"  <br>
+Node	|	CloudInitData	|  <br>
+Node	|	KubernetesVersion	|	Version of Kubeternes running  <br>
+Node	|	ErrorLog	|  <br>
+Node	|	Template	|	The Vsphere template from which the node was deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  <br>
+Node	|	MacAddresses	|	MAC addresses of the interfaces on the tenant cluster node  <br>
+Deployer	|	ProxyCMD	|  <br>
 Deployer	|	ProviderType	|	The type of provider supported - as of CCP 1.5 this will be vsphere	<br>
-Deployer	|	Provider	|	Provider configuration - See below	<br>
-NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp	<br>
-NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this should be "ready"	<br>
+Deployer	|	Provider	|	Provider configuration - See below  <br>
+NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp  <br>
+NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this should be "ready"  <br>
 NetworkPlugin	|	Details	|	"Includes details of the plugin e.g. ""{\""pod_cidr\"":\""192.168.0.0/16\"",\""pod_allocation_prefix\"":24,\""pod_vpp_side_cidr\"":\""10.2.0.0/24\"",\""host_cidr\"":\""10.3.0.0/16\"",\""host_allocation_prefix\"":24,\""interconnect_cidr\"":\""\"",\""vxlan_cidr\"":\""10.4.1.0/24\"",\""service_cidr\"":\""10.96.0.0/12\"",\""mtu\"":1422,\""vswitch_cpu_limit\"":0,\""steal_nic\"":false,\""container_image_tag\"":\""\"",\""container_image_repo_prefix\"":\""registry.ci.ciscolabs.com/cpsg_kaas-images/dockerhub/contivvpp\"",\""helm_chart_url\"":\""\"",\""VPPNICAddr\"":\""0000:1b:00.0\"",\""VPPCertsDir\"":\""/etc/kubernetes/pki/contiv-vpp\""}""
-    },"	<br>
-HelmChart	|	HelmChartUUID	|	UUID of the Helm chart	<br>
-HelmChart	|	ClusterUUID	|		<br>
-HelmChart	|	ChartURL	|		<br>
-HelmChart	|	Name	|	Name of the Helm chart	<br>
-HelmChart	|	Options	|		<br>
-Provider	|	VsphereDataCenter	|	Vsphere datacenter in which the nodes will be deployed	<br>
-Provider	|	VsphereDatastore	|	Vsphere datastore on which the nodes will be deployed      	<br>
-Provider	|	VsphereSCSIControllerType	|		<br>
-Provider	|	VsphereWorkingDir	|		<br>
-Provider	|	VsphereClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function	<br>
-Provider	|	ClientConfig	|		<br>
-VsphereClientConfig	|	IP	|		<br>
-VsphereClientConfig	|	Port	|		<br>
-VsphereClientConfig	|	Username	|		<br>
-VsphereClientConfig	|	Password	|		<br>
-WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use	<br>
-WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use	<br>
-WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	<br>
-MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use	<br>
-MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use	<br>
-MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	<br>
+    },"  <br>
+HelmChart	|	HelmChartUUID	|	UUID of the Helm chart  <br>
+HelmChart	|	ClusterUUID	|  <br>
+HelmChart	|	ChartURL	|  <br>
+HelmChart	|	Name	|	Name of the Helm chart  <br>
+HelmChart	|	Options	|  <br>
+Provider	|	VsphereDataCenter	|	Vsphere datacenter in which the nodes will be deployed  <br>
+Provider	|	VsphereDatastore	|	Vsphere datastore on which the nodes will be deployed  <br>
+Provider	|	VsphereSCSIControllerType	|  <br>
+Provider	|	VsphereWorkingDir	|  <br>
+Provider	|	VsphereClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  <br>
+Provider	|	ClientConfig	|  <br>
+VsphereClientConfig	|	IP	|  <br>
+VsphereClientConfig	|	Port	|  <br>
+VsphereClientConfig	|	Username	|  <br>
+VsphereClientConfig	|	Password	|  <br>
+WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use  <br>
+WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use  <br>
+WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  <br>
+MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use  <br>
+MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use  <br>
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  <br>
 
 #### GetClusters
 
