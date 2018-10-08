@@ -676,8 +676,7 @@ Deployer	|	ProviderType	|	The type of provider supported - as of CCP 1.5 this wi
 Deployer	|	Provider	|	Provider configuration - See below
 NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp
 NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this shoul <BR>  be "ready"
-NetworkPlugin	|	Details	|	"Includes details of the plugin e.g. ""{\""pod_cidr\"":\""192.168.0.0/16\"", <BR> ""pod_allocation_prefix\"":24,\""pod_vpp_side_cidr\"":\""10.2.0.0/24\"",\""host_cidr\"":\""10.3.0.0/16\"",\""host_allocation_prefix\"":24,\""interconnect_cidr\"":\""\"",\""vxlan_cidr\"":\""10.4.1.0/24\"",\""service_cidr\"":\""10.96.0.0/12\"",\""mtu\"":1422,\""vswitch_cpu_limit\"":0,\""steal_nic\"":false,\""container_image_tag\"":\""\"",\""container_image_repo_prefix\"":\""registry.ci.ciscolabs.com/cpsg_kaas-images/dockerhub/contivvpp\"",\""helm_chart_url\"":\""\"",\""VPPNICAddr\"":\""0000:1b:00.0\"",\""VPPCertsDir\"":\""/etc/kubernetes/pki/contiv-vpp\""}""
-    },"
+NetworkPlugin	|	Details	|	"Includes details of the plugin e.g. 
 HelmChart	|	HelmChartUUID	|	UUID of the Helm chart
 HelmChart	|	ClusterUUID	|	
 HelmChart	|	ChartURL	|	
@@ -695,10 +694,11 @@ VsphereClientConfig	|	Username	|
 VsphereClientConfig	|	Password	|	
 WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use
 WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use
-WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
 MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use
 MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use
-MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  
+	
 #### GetClusters
 
 ```go
