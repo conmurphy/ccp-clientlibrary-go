@@ -98,10 +98,6 @@ type Deployer struct {
 	ProxyCMD     *string   `json:"proxy_cmd,omitempty"`
 	ProviderType *string   `json:"provider_type,omitempty" validate:"nonzero"`
 	Provider     *Provider `json:"provider,omitempty" validate:"nonzero"`
-	IP           *string   `json:"ip,omitempty"`
-	Port         *int64    `json:"port,omitempty"`
-	Username     *string   `json:"username,omitempty"`
-	Password     *string   `json:"password,omitempty"`
 }
 
 type NetworkPlugin struct {
