@@ -466,6 +466,7 @@ if err != nil {
 - [GetClusterEnv](#getclusterenv)
 - [GetClusterHelmCharts](#getclusterhelmcharts)
 - [AddCluster](#addcluster)
+- [AddClusterBasic](#addclusterbasic)
 - [PatchCluster](#patchcluster)
 - [DeleteCluster](#deletecluster)
 
@@ -938,6 +939,88 @@ if err != nil {
 }
  
 ```
+
+#### AddClusterBasic
+
+This function was added in order to provide users a simpler way of adding clusters. The list of required fields has been shortend with all defaults and computed values such as UUIDs to be automatically configured on behalf of the user.
+
+The following fields and values will be configured automatically with the remainder to be specified by the user
+
+* ProviderClientConfigUUID
+* KubernetesVersion - default will be set to 1.10.1
+* Type - default will be set to 1
+* Deployer
+  * ProviderType will be set to "vsphere"
+  * Provider
+    * VsphereDataCenter - already specified as part of Cluster struct so will use this same value
+    * VsphereClientConfigUUID
+    * VsphereDatastore - already specified as part of Cluster struct so will use this same value
+    * VsphereWorkingDir - default will be set to /VsphereDataCenter/vm
+* NetworkPlugin
+  * Name - default will be set to contiv-vpp
+  * Status - default will be set to ""
+  * Details - default will be set to "{\"pod_cidr\":\"192.168.0.0/16\"}"
+* WorkerNodePool
+  * VCPUs - default will be set to 2
+  * Memory - default will be set to 16384
+* MasterNodePool
+  * VCPUs - default will be set to 2
+  * Memory - default will be set to 8192
+
+Any fields outside of the required fields are optional
+
+```go
+func (s *Client) AddClusterBasic(cluster *Cluster) (*Cluster, error)
+```
+
+##### __Required Fields__
+* Name
+* Datacenter
+* Cluster
+* Datastore
+* ResourcePool
+* Template 
+* Networks
+* SSHUser
+* SSHKey
+* Masters
+* Workers
+* IsHarborEnabled                   
+* IsIstioEnabled             
+
+##### Example
+```go
+
+var networks []string
+
+networks = append(networks, "ccp-network/ccp-network-portgroup")
+	
+newCluster := ccp.Cluster{
+  Name:                     ccp.String("ccp-api-cluster"),
+  Datacenter:       	    ccp.String("ccp-lab"),
+  Cluster:                  ccp.String("hx-cluster"),
+  Datastore:    	    ccp.String("ccpDatastore"),
+  ResourcePool: 	    ccp.String("hx-cluster/Resources"),
+  SSHUser:      	    ccp.String("ccpuser"),
+  SSHKey:            	    ccp.String("ssh-rsa sshkey123abc me@locahost"),
+  Template:     	    ccp.String("ccp-tenant-image-1.10.1-1.1.0.ova"),
+  Masters:      	    ccp.Int64(1),
+  Workers:      	    ccp.Int64(2),
+  IsHarborEnabled: 	    ccp.Bool(false),	                  
+  IsIstioEnabled: 	    ccp.Bool(false),
+  Networks:    		    &networks,
+}
+
+cluster, err := client.AddClusterBasic(&newCluster)
+
+if err != nil {
+  fmt.Println(err)
+} else {
+  fmt.Println("Cluster UUID: " + *cluster.UUID)
+}
+ 
+```
+
 #### PatchCluster
 
 ```go
