@@ -604,15 +604,14 @@ type MasterNodePool struct {
 
 Type | Field | Description 
 ------------ | ------------ | -------------
-Cluster	|	UUID	|	UUID of the  cluster 
-Cluster	|	ProviderClientConfigUUID	| UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  
-
-Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
-Cluster	|	Name	|	Name of the new cluster
-Cluster	|	Description	|	Description for the new cluster
-Cluster	|	Workers	|	Number of worker nodes. Must be greater than 0
-Cluster	|	Masters	|	Number of master nodes. As of release 1.5 this value should be 1
-Cluster	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
+Cluster	|	UUID	|	UUID of the  cluster  
+Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  
+Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function  
+Cluster	|	Name	|	Name of the new cluster  
+Cluster	|	Description	|	Description for the new cluster  
+Cluster	|	Workers	|	Number of worker nodes. Must be greater than 0  
+Cluster	|	Masters	|	Number of master nodes. As of release 1.5 this value should be 1  
+Cluster	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```      
 Cluster	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
 Cluster	|	Type	|	As of CCP 1.5 this should be set to 1
 Cluster	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
@@ -677,7 +676,8 @@ Deployer	|	ProviderType	|	The type of provider supported - as of CCP 1.5 this wi
 Deployer	|	Provider	|	Provider configuration - See below
 NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp
 NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this should be "ready"
-NetworkPlugin	|	Details	|	Includes details of the plugin e.g. "{\"pod_cidr\":\"192.168.0.0/16\",\"pod_allocation_prefix\":24,\"pod_vpp_side_cidr\":\"10.2.0.0/24\",\"host_cidr\":\"10.3.0.0/16\",\"host_allocation_prefix\":24,\"interconnect_cidr\":\"\",\"vxlan_cidr\":\"10.4.1.0/24\",\"service_cidr\":\"10.96.0.0/12\",\"mtu\":1422,\"vswitch_cpu_limit\":0,\"steal_nic\":false,\"container_image_tag\":\"\",\"helm_chart_url\":\"\",\"VPPNICAddr\":\"0000:1b:00.0\",\"VPPCertsDir\":\"/etc/kubernetes/pki/contiv-vpp\"}"
+NetworkPlugin	|	Details	|	"Includes details of the plugin e.g. ""{\""pod_cidr\"":\""192.168.0.0/16\"",\""pod_allocation_prefix\"":24,\""pod_vpp_side_cidr\"":\""10.2.0.0/24\"",\""host_cidr\"":\""10.3.0.0/16\"",\""host_allocation_prefix\"":24,\""interconnect_cidr\"":\""\"",\""vxlan_cidr\"":\""10.4.1.0/24\"",\""service_cidr\"":\""10.96.0.0/12\"",\""mtu\"":1422,\""vswitch_cpu_limit\"":0,\""steal_nic\"":false,\""container_image_tag\"":\""\"",\""container_image_repo_prefix\"":\""registry.ci.ciscolabs.com/cpsg_kaas-images/dockerhub/contivvpp\"",\""helm_chart_url\"":\""\"",\""VPPNICAddr\"":\""0000:1b:00.0\"",\""VPPCertsDir\"":\""/etc/kubernetes/pki/contiv-vpp\""}""
+    },"
 HelmChart	|	HelmChartUUID	|	UUID of the Helm chart
 HelmChart	|	ClusterUUID	|	
 HelmChart	|	ChartURL	|	
