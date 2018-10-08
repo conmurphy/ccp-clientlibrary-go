@@ -556,10 +556,6 @@ type Deployer struct {
 	ProxyCMD     *string    
 	ProviderType *string   
 	Provider     *Provider 
-	IP           *string  
-	Port         *int64   
-	Username     *string    
-	Password     *string    
 
 type NetworkPlugin struct {
 	Name   			   *string  
