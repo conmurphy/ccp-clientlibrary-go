@@ -942,18 +942,18 @@ if err != nil {
 
 #### AddClusterBasic
 
-This function was added in order to provide users a simpler way of adding clusters. The list of required fields has been shortend with all defaults and computed values such as UUIDs to be automatically configured on behalf of the user.
+This function was added in order to provide users a simpler way of creating clusters. The list of required fields has been shortend with defaults and computed values such as UUIDs to be automatically configured on behalf of the user.
 
-The following fields and values will be configured automatically with the remainder to be specified by the user
+The following fields and values will be configured automatically with the remainder to be specified by the user as shown in the example below.
 
-* ProviderClientConfigUUID
+* ProviderClientConfigUUID - retrived automatically from the provider config
 * KubernetesVersion - default will be set to 1.10.1
 * Type - default will be set to 1
 * Deployer
   * ProviderType will be set to "vsphere"
   * Provider
     * VsphereDataCenter - already specified as part of Cluster struct so will use this same value
-    * VsphereClientConfigUUID
+    * VsphereClientConfigUUID - retrived automatically from the provider config
     * VsphereDatastore - already specified as part of Cluster struct so will use this same value
     * VsphereWorkingDir - default will be set to /VsphereDataCenter/vm
 * NetworkPlugin
