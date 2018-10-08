@@ -89,7 +89,6 @@ Example JSON File - newCluster.json
   "vcpus": 2,
   "memory": 16384,
   "type": 1,
-  "deployer_type": "kubeadm",
   "ingress_vip_pool_id": "12345abcd-abcd1234-1234543221",
     "network_plugin": {
       "name": "contiv-vpp",
@@ -308,6 +307,8 @@ func (s *Client) GetHealth() (*Health, error)
 
 ### Users
 
+[Field Explanations](#field-explanations)
+
 - [GetUsers](#getusers)
 - [GetUser](#getuser)
 - [AddUser](#adduser)
@@ -316,7 +317,6 @@ func (s *Client) GetHealth() (*Health, error)
 
 ```go
 type User struct {
-	Token     *string 
 	Username  *string 
 	Disable   *bool  
 	Role      *string 
@@ -326,6 +326,14 @@ type User struct {
 }
 ```
 
+#### Field Explanations
+
+Field | Description 
+------------ | -------------
+Role | Role of the user - either Administrator or Devops
+Disable | Whether or not the user account is enabled or disabled
+	
+	
 #### GetUsers
 
 ```go
@@ -448,6 +456,8 @@ if err != nil {
 
 ### Clusters
 
+[Field Explanations](#field-explanations)
+
 - [GetClusters](#getclusters)
 - [GetCluster](#getcluster)
 - [GetClusterHealth](#getclusterhealth)
@@ -462,28 +472,25 @@ if err != nil {
 ```go
 type Cluster struct {
 	UUID                       *string  
-	ProviderClientConfigUUID   *string 
-	ACIProfileUUID             *string
-	Name                       *string 
-	Description                *string  
-	Workers                    *int64  
-	Masters                    *int64
-	ResourcePool               *string               
-	Networks                   *[]string            
-	VCPUs                      *int64               
-	Memory                     *int64                
-	Type                       *int64          
-	Datacenter                 *string            
-	Cluster                    *string              
-	Datastore                  *string          
+	ProviderClientConfigUUID   *string  
+	ACIProfileUUID             *string 
+	Name                       *string  
+	Description                *string   
+	Workers                    *int64    
+	Masters                    *int64   
+	ResourcePool               *string          
+	Networks                   *[]string 
+	Type                       *int64 
+	Datacenter                 *string 
+	Cluster                    *string        
+	Datastore                  *string 
 	State                      *string 
-	Template                   *string
+	Template                   *string 
 	SSHUser                    *string 
 	SSHPassword                *string 
 	SSHKey                     *string 
 	Labels                     *[]Label 
-	Nodes                      *[]Node  
-	DeployerType               *string               
+	Nodes                      *[]Node   
 	Deployer                   *KubeADM              
 	KubernetesVersion          *string               
 	ClusterEnvURL              *string               
@@ -515,6 +522,15 @@ type Cluster struct {
 	IsIstioEnabled             *bool          
 	WorkerNodePool             *WorkerNodePool  
 	MasterNodePool             *MasterNodePool  
+	Infra                      *Infra 
+}
+
+type Infra struct {
+	Datacenter   *string   
+	Datastore    *string  
+	Cluster      *string   
+	Networks     *[]string
+	ResourcePool *string   
 }
 
 type Label struct {
@@ -588,8 +604,110 @@ type MasterNodePool struct {
 }
 ```
 
+#### Field Explanations
 
-
+Type | Field | Description 
+------------ | ------------ | -------------
+Cluster	|	UUID	|	UUID of the  cluster 
+Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
+Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using the  ```GetACIProfiles()``` function
+Cluster	|	Name	|	Name of the new cluster
+Cluster	|	Description	|	Description for the new cluster
+Cluster	|	Workers	|	Number of worker nodes. Must be greater than 0
+Cluster	|	Masters	|	Number of master nodes. As of release 1.5 this value should be 1
+Cluster	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
+Cluster	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+Cluster	|	Type	|	As of CCP 1.5 this should be set to 1
+Cluster	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
+Cluster	|	Cluster	|	Vsphere cluster on which the nodes will be deployed      
+Cluster	|	Datastore	|	Vsphere datastore on which the nodes will be deployed      
+Cluster	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the cluster deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
+Cluster	|	SSHPassword	|	Password for the SSH user specified above
+Cluster	|	SSHKey	|	Key for the SSH user specified above
+Cluster	|	Labels	|	Labels configuration - See below
+Cluster	|	Nodes	|	Node configuration - See below
+Cluster	|	Deployer	|	Deployer configuration - See below
+Cluster	|	Kubernetes Version	|	Version of Kubeternes to use
+Cluster	|	ClusterEnvURL	|	
+Cluster	|	ClusterDashboardURL	|	
+Cluster	|	NetworkPlugin	|	
+Cluster	|	CCPPrivateSSHKey	|	
+Cluster	|	CCPPublicSSHKey	|	
+Cluster	|	NTPPools	|	
+Cluster	|	NTPServers	|	
+Cluster	|	IsControlCluster	|	
+Cluster	|	IsAdopt	|	
+Cluster	|	RegistriesSelfSigned	|	
+Cluster	|	RegistriesInsecure	|	
+Cluster	|	RegistriesRootCA	|	
+Cluster	|	IngressVIPPoolID	|	Required if using Load Balancer IP
+Cluster	|	IngressVIPAddressID	|	
+Cluster	|	IngressVIPs	|	
+Cluster	|	KeepaliveVRID	|	
+Cluster	|	HelmCharts	|	
+Cluster	|	MasterVIPAddressID	|	
+Cluster	|	MasterVIP	|	
+Cluster	|	MasterMACAddresses	|	
+Cluster	|	ClusterHealthStatus	|	
+Cluster	|	AuthList	|	
+Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False
+Cluster	|	HarborAdminServerPassword	|	
+Cluster	|	HarborRegistrySize	|	
+Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled this should be 3 or greater
+Cluster	|	IsIstioEnabled	|	Whether or not Istio is enabled - True or False
+Cluster	|	WorkerNodePool	|	Worker Node configuration - See below 
+Cluster	|	MasterNodePool	|	Master Node configuration - See below 
+Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
+Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed      
+Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed      
+Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
+Label	|	Key	|	
+Label	|	Value	|	
+Node	|	UUID	|	
+Node	|	Name	|	
+Node	|	PublicIP	|	
+Node	|	PrivateIP	|	
+Node	|	IsMaster	|	
+Node	|	State	|	
+Node	|	CloudInitData	|	
+Node	|	KubernetesVersion	|	Version of Kubeternes running
+Node	|	ErrorLog	|	
+Node	|	Template	|	
+Node	|	MacAddresses	|	
+Deployer	|	ProxyCMD	|	
+Deployer	|	ProviderType	|	
+Deployer	|	Provider	|	
+Deployer	|	IP	|	
+Deployer	|	Port	|	
+Deployer	|	Username	|	
+Deployer	|	Password	|	
+NetworkPlugin	|	Name	|	
+NetworkPlugin	|	Status	|	
+NetworkPlugin	|	Details	|	
+HelmChart	|	HelmChartUUID	|	
+HelmChart	|	ClusterUUID	|	
+HelmChart	|	ChartURL	|	
+HelmChart	|	Name	|	
+HelmChart	|	Options	|	
+Provider	|	VsphereDataCenter	|	
+Provider	|	VsphereDatastore	|	
+Provider	|	VsphereSCSIControllerType	|	
+Provider	|	VsphereWorkingDir	|	
+Provider	|	VsphereClientConfigUUID	|	
+Provider	|	ClientConfig	|	
+VsphereClientConfig	|	IP	|	
+VsphereClientConfig	|	Port	|	
+VsphereClientConfig	|	Username	|	
+VsphereClientConfig	|	Password	|	
+WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use
+WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use
+WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use
+MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	
+	
 #### GetClusters
 
 ```go
@@ -727,7 +845,6 @@ func (s *Client) AddCluster(cluster *Cluster) (*Cluster, error)
 * SSHUser
 * Type
 * Masters
-* DeployerType
 * Deployer
   * ProviderType
   * Provider 
@@ -803,7 +920,6 @@ newCluster := ccp.Cluster{
   Workers:      	    ccp.Int64(2),
   SSHUser:      	    ccp.String("ccpuser"),
   Type:         	    ccp.Int64(1),
-  DeployerType: 	    ccp.String("kubeadm"),
   Deployer: 		    &deployer,
   NetworkPlugin:            &networkPlugin,
   IsHarborEnabled: 	    ccp.Bool(false),	    
