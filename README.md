@@ -513,8 +513,7 @@ type Cluster struct {
 	HelmCharts                 *[]HelmChart    
 	MasterVIPAddrID            *string          
 	MasterVIP                  *string        
-	MasterMACAddresses         *[]string      
-	ClusterHealthStatus        *string       
+	MasterMACAddresses         *[]string           
 	AuthList                   *[]string 
 	IsHarborEnabled            *bool           
 	HarborAdminServerPassword  *string        
