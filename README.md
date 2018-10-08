@@ -605,7 +605,7 @@ type MasterNodePool struct {
 Type | Field | Description 
 ------------ | ------------ | -------------
 Cluster	|	UUID	|	UUID of the  cluster  
-Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can <BR> be found using the ```GetProviderClientConfigs()``` function  
+Cluster	|	ProviderClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function  
 Cluster	|	ACIProfileUUID	|	UUID of the ACI profile used with the cluster which can be found using <BR> the  ```GetACIProfiles()``` function  
 Cluster	|	Name	|	Name of the new cluster  
 Cluster	|	Description	|	Description for the new cluster  
