@@ -686,7 +686,7 @@ Provider	|	VsphereDataCenter	|	Vsphere datacenter in which the nodes will be dep
 Provider	|	VsphereDatastore	|	Vsphere datastore on which the nodes will be deployed      
 Provider	|	VsphereSCSIControllerType	|	
 Provider	|	VsphereWorkingDir	|	
-Provider	|	VsphereClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can <BR> be found using the ```GetProviderClientConfigs()``` function
+Provider	|	VsphereClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
 Provider	|	ClientConfig	|	
 VsphereClientConfig	|	IP	|	
 VsphereClientConfig	|	Port	|	
@@ -694,10 +694,10 @@ VsphereClientConfig	|	Username	|
 VsphereClientConfig	|	Password	|	
 WorkerNodePool	|	VCPUs	|	Amount of vCPUs each K8s worker node will use
 WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use
-WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
 MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use
 MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use
-MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This <BR> should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation <br> e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0  
 
 #### GetClusters
 
