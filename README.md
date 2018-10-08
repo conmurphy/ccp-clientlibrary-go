@@ -637,7 +637,7 @@ Cluster	|	IsAdopt	|
 Cluster	|	RegistriesSelfSigned	|	
 Cluster	|	RegistriesInsecure	|	
 Cluster	|	RegistriesRootCA	|	
-Cluster	|	IngressVIPPoolID	|	UUID of the Ingress VIP Pool used for the cluster. Required if using <BR> Load Balancer IP
+Cluster	|	IngressVIPPoolID	|	UUID of the Ingress VIP Pool used for the cluster. Required if using Load Balancer IP
 Cluster	|	IngressVIPAddressID	|	UUID of the Ingress VIP address 
 Cluster	|	IngressVIPs	|	Individual VIP addresses assigned to the cluster
 Cluster	|	KeepaliveVRID	|	
@@ -649,14 +649,14 @@ Cluster	|	AuthList	|
 Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False
 Cluster	|	HarborAdminServerPassword	|	
 Cluster	|	HarborRegistrySize	|	
-Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled <BR> this should be 3 or greater
+Cluster	|	LoadBalancerIPNum	|	Number of IP addresses to use from the VIP pool. If Istio is enabled this should be 3 or greater
 Cluster	|	IsIstioEnabled	|	Whether or not Istio is enabled - True or False
 Cluster	|	WorkerNodePool	|	Worker Node configuration - See below 
 Cluster	|	MasterNodePool	|	Master Node configuration - See below 
 Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
 Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed      
 Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed      
-Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be <BR> the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
+Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
 Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no <BR> resources have been created this is typically ```[cluster-name]/Resources```    
 Label	|	Key	|	
 Label	|	Value	|	
