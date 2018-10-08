@@ -307,7 +307,7 @@ func (s *Client) GetHealth() (*Health, error)
 
 ### Users
 
-[Field Explanations](#field-explanations)
+[Users Field Explanations](#users-field-explanations)
 
 - [GetUsers](#getusers)
 - [GetUser](#getuser)
@@ -326,7 +326,7 @@ type User struct {
 }
 ```
 
-#### Field Explanations
+#### Users Field Explanations
 
 Field | Description 
 ------------ | -------------
@@ -456,7 +456,7 @@ if err != nil {
 
 ### Clusters
 
-[Field Explanations](#field-explanations)
+[Clusters Field Explanations](#clusters-field-explanations)
 
 - [GetClusters](#getclusters)
 - [GetCluster](#getcluster)
@@ -600,7 +600,7 @@ type MasterNodePool struct {
 }
 ```
 
-#### Field Explanations
+#### Clusters Field Explanations
 
 Type | Field | Description 
 ------------ | ------------ | -------------
