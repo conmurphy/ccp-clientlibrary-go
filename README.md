@@ -618,7 +618,7 @@ Cluster	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
 Cluster	|	Cluster	|	Vsphere cluster on which the nodes will be deployed      
 Cluster	|	Datastore	|	Vsphere datastore on which the nodes will be deployed      
 Cluster	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
-Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the <BR> cluster  deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
+Cluster	|	SSHUser	|	Username of a user to setup on each of the nodes as part of the cluster  deployment. The nodes will then be accessible using this username and SSH key below. Use case includes troubleshooting
 Cluster	|	SSHPassword	|	Password for the SSH user specified above
 Cluster	|	SSHKey	|	Key for the SSH user specified above
 Cluster	|	Labels	|	Labels configuration - See below
@@ -632,7 +632,7 @@ Cluster	|	CCPPrivateSSHKey	|
 Cluster	|	CCPPublicSSHKey	|	
 Cluster	|	NTPPools	|	NTP pools configrued for the cluster
 Cluster	|	NTPServers	|	NTP servers configured within the pools mentioned above
-Cluster	|	IsControlCluster	|	Whether or not this cluster is the CCP control cluster. For tenant <BR> clusters this should be false
+Cluster	|	IsControlCluster	|	Whether or not this cluster is the CCP control cluster. For tenant clusters this should be false
 Cluster	|	IsAdopt	|	
 Cluster	|	RegistriesSelfSigned	|	
 Cluster	|	RegistriesInsecure	|	
