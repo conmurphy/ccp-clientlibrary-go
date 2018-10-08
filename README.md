@@ -657,7 +657,7 @@ Infra	|	Datacenter	|	Vsphere datacenter in which the nodes will be deployed
 Infra	|	Datastore	|	Vsphere cluster on which the nodes will be deployed      
 Infra	|	Cluster	|	Vsphere datastore on which the nodes will be deployed      
 Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere these will be the names of the port groups that will attach to the K8s nodes. If using Hyperflex remember to include the ```k8-priv-iscsivm-network```      
-Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no <BR> resources have been created this is typically ```[cluster-name]/Resources```    
+Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
 Label	|	Key	|	
 Label	|	Value	|	
 Node	|	UUID	|	UUID of the tenant cluster node
@@ -665,17 +665,17 @@ Node	|	Name	|	Name of the tenant cluster node
 Node	|	PublicIP	|	Public IP of the tenant cluster node
 Node	|	PrivateIP	|	Private IP of the tenant cluster node
 Node	|	IsMaster	|	Whether or not the tenant cluster node is the K8s master
-Node	|	State	|	The state of the node - when everything is working correctly this <BR> should be "READY"
+Node	|	State	|	The state of the node - when everything is working correctly this should be "READY"
 Node	|	CloudInitData	|	
 Node	|	KubernetesVersion	|	Version of Kubeternes running
 Node	|	ErrorLog	|	
-Node	|	Template	|	The Vsphere template from which the node was deployed. This should <BR> have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+Node	|	Template	|	The Vsphere template from which the node was deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
 Node	|	MacAddresses	|	MAC addresses of the interfaces on the tenant cluster node
 Deployer	|	ProxyCMD	|	
 Deployer	|	ProviderType	|	The type of provider supported - as of CCP 1.5 this will be vsphere
 Deployer	|	Provider	|	Provider configuration - See below
 NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp
-NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this shoul <BR>  be "ready"
+NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this should  be "ready"
 NetworkPlugin	|	Details	|	"Includes details of the plugin e.g. 
 HelmChart	|	HelmChartUUID	|	UUID of the Helm chart
 HelmChart	|	ClusterUUID	|	
