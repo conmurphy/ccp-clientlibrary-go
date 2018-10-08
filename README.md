@@ -626,26 +626,25 @@ Cluster	|	Nodes	|	Node configuration - See below
 Cluster	|	Deployer	|	Deployer configuration - See below
 Cluster	|	Kubernetes Version	|	Version of Kubeternes to use
 Cluster	|	ClusterEnvURL	|	
-Cluster	|	ClusterDashboardURL	|	
-Cluster	|	NetworkPlugin	|	
+Cluster	|	ClusterDashboardURL	|	URL for the K8s dashboard of this cluster
+Cluster	|	NetworkPlugin	|	Network plugin configuration - See below
 Cluster	|	CCPPrivateSSHKey	|	
 Cluster	|	CCPPublicSSHKey	|	
-Cluster	|	NTPPools	|	
-Cluster	|	NTPServers	|	
-Cluster	|	IsControlCluster	|	
+Cluster	|	NTPPools	|	NTP pools configrued for the cluster
+Cluster	|	NTPServers	|	NTP servers configured within the pools mentioned above
+Cluster	|	IsControlCluster	|	Whether or not this cluster is the CCP control cluster. For tenant clusters this should be false
 Cluster	|	IsAdopt	|	
 Cluster	|	RegistriesSelfSigned	|	
 Cluster	|	RegistriesInsecure	|	
 Cluster	|	RegistriesRootCA	|	
-Cluster	|	IngressVIPPoolID	|	Required if using Load Balancer IP
-Cluster	|	IngressVIPAddressID	|	
-Cluster	|	IngressVIPs	|	
+Cluster	|	IngressVIPPoolID	|	UUID of the Ingress VIP Pool used for the cluster. Required if using Load Balancer IP
+Cluster	|	IngressVIPAddressID	|	UUID of the Ingress VIP address 
+Cluster	|	IngressVIPs	|	Individual VIP addresses assigned to the cluster
 Cluster	|	KeepaliveVRID	|	
-Cluster	|	HelmCharts	|	
-Cluster	|	MasterVIPAddressID	|	
-Cluster	|	MasterVIP	|	
-Cluster	|	MasterMACAddresses	|	
-Cluster	|	ClusterHealthStatus	|	
+Cluster	|	HelmCharts	|	List of helm charts - See below
+Cluster	|	MasterVIPAddressID	|	UUID of the Master VIP address
+Cluster	|	MasterVIP	|	VIP address assigned to the master tenant cluster node
+Cluster	|	MasterMACAddresses	|	MAC addresses of the interfaces on the master tenant cluster node
 Cluster	|	AuthList	|	
 Cluster	|	IsHarborEnabled	|	Whether or not Harbor is enabled- True or False
 Cluster	|	HarborAdminServerPassword	|	
@@ -661,37 +660,33 @@ Infra	|	Networks	|	Networks that the nodes will use, in the case of Vsphere thes
 Infra	|	ResourcePool	|	The Vsphere resource pool in which the nodes will be running. If no resources have been created this is typically ```[cluster-name]/Resources```    
 Label	|	Key	|	
 Label	|	Value	|	
-Node	|	UUID	|	
-Node	|	Name	|	
-Node	|	PublicIP	|	
-Node	|	PrivateIP	|	
-Node	|	IsMaster	|	
-Node	|	State	|	
+Node	|	UUID	|	UUID of the tenant cluster node
+Node	|	Name	|	Name of the tenant cluster node
+Node	|	PublicIP	|	Public IP of the tenant cluster node
+Node	|	PrivateIP	|	Private IP of the tenant cluster node
+Node	|	IsMaster	|	Whether or not the tenant cluster node is the K8s master
+Node	|	State	|	The state of the node - when everything is working correctly this sholud be "READY"
 Node	|	CloudInitData	|	
 Node	|	KubernetesVersion	|	Version of Kubeternes running
 Node	|	ErrorLog	|	
-Node	|	Template	|	
-Node	|	MacAddresses	|	
+Node	|	Template	|	The Vsphere template from which the node was deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
+Node	|	MacAddresses	|	MAC addresses of the interfaces on the tenant cluster node
 Deployer	|	ProxyCMD	|	
-Deployer	|	ProviderType	|	
-Deployer	|	Provider	|	
-Deployer	|	IP	|	
-Deployer	|	Port	|	
-Deployer	|	Username	|	
-Deployer	|	Password	|	
-NetworkPlugin	|	Name	|	
-NetworkPlugin	|	Status	|	
-NetworkPlugin	|	Details	|	
-HelmChart	|	HelmChartUUID	|	
+Deployer	|	ProviderType	|	The type of provider supported - as of CCP 1.5 this will be vsphere
+Deployer	|	Provider	|	Provider configuration - See below
+NetworkPlugin	|	Name	|	Name of the network plugin - e.g. calico, contiv-vpp
+NetworkPlugin	|	Status	|	Status of the plugin - when everything is working correctly this should be "ready"
+NetworkPlugin	|	Details	|	Includes details of the plugin e.g. "{\"pod_cidr\":\"192.168.0.0/16\",\"pod_allocation_prefix\":24,\"pod_vpp_side_cidr\":\"10.2.0.0/24\",\"host_cidr\":\"10.3.0.0/16\",\"host_allocation_prefix\":24,\"interconnect_cidr\":\"\",\"vxlan_cidr\":\"10.4.1.0/24\",\"service_cidr\":\"10.96.0.0/12\",\"mtu\":1422,\"vswitch_cpu_limit\":0,\"steal_nic\":false,\"container_image_tag\":\"\",\"helm_chart_url\":\"\",\"VPPNICAddr\":\"0000:1b:00.0\",\"VPPCertsDir\":\"/etc/kubernetes/pki/contiv-vpp\"}"
+HelmChart	|	HelmChartUUID	|	UUID of the Helm chart
 HelmChart	|	ClusterUUID	|	
 HelmChart	|	ChartURL	|	
-HelmChart	|	Name	|	
+HelmChart	|	Name	|	Name of the Helm chart
 HelmChart	|	Options	|	
-Provider	|	VsphereDataCenter	|	
-Provider	|	VsphereDatastore	|	
+Provider	|	VsphereDataCenter	|	Vsphere datacenter in which the nodes will be deployed
+Provider	|	VsphereDatastore	|	Vsphere datastore on which the nodes will be deployed      
 Provider	|	VsphereSCSIControllerType	|	
 Provider	|	VsphereWorkingDir	|	
-Provider	|	VsphereClientConfigUUID	|	
+Provider	|	VsphereClientConfigUUID	|	UUID of the provider for the cluster (e.g. vsphere provider) which can be found using the ```GetProviderClientConfigs()``` function
 Provider	|	ClientConfig	|	
 VsphereClientConfig	|	IP	|	
 VsphereClientConfig	|	Port	|	
@@ -702,7 +697,7 @@ WorkerNodePool	|	Memory	|	Amount of memory each K8s worker node will use
 WorkerNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   
 MasterNodePool	|	VCPUs	|	Amount of vCPUs each K8s master node will use
 MasterNodePool	|	Memory	|	Amount of memory each K8s master node will use
-MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0   	
+MasterNodePool	|	Template	|	The Vsphere template from which the nodes will be deployed. This should have been deployed at the initial installation e.g. ccp-tenant-image-1.10.1-ubuntu16-1.5.0    	
 	
 #### GetClusters
 
