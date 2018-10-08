@@ -56,7 +56,6 @@ type Cluster struct {
 	MasterVIPAddrID           *string         `json:"master_vip_addr_id,omitempty"`
 	MasterVIP                 *string         `json:"master_vip,omitempty"`
 	MasterMACAddresses        *[]string       `json:"master_mac_addresses,omitempty"`
-	ClusterHealthStatus       *string         `json:"cluster_health_status,omitempty"`
 	AuthList                  *[]string       `json:"auth_list,omitempty"`
 	IsHarborEnabled           *bool           `json:"is_harbor_enabled,omitempty" `
 	HarborAdminServerPassword *string         `json:"harbor_admin_server_password,omitempty"`
