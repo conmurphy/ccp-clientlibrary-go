@@ -28,7 +28,7 @@ import (
 //ClusterAPIResponse
 type Cluster struct {
 	UUID                      *string         `json:"uuid,omitempty"`
-	ProviderClientConfigUUID  *string         `json:"provider_client_config_uuid,omitempty" validate:"nonzero"`
+	ProviderClientConfigUUID  *string         `json:"provider_client_config_uuid,omitempty" `
 	ACIProfileUUID            *string         `json:"aci_profile_uuid,omitempty"`
 	Name                      *string         `json:"name,omitempty"  validate:"nonzero"`
 	Description               *string         `json:"description,omitempty"`
@@ -75,7 +75,7 @@ type Cluster struct {
 	IsHarborEnabled           *bool           `json:"is_harbor_enabled,omitempty" `
 	HarborAdminServerPassword *string         `json:"harbor_admin_server_password,omitempty"`
 	HarborRegistrySize        *string         `json:"harbor_registry_size,omitempty"`
-	LoadBalancerIPNum         *int64          `json:"load_balancer_ip_num,omitempty"  validate:"nonzero" `
+	LoadBalancerIPNum         *int64          `json:"load_balancer_ip_num,omitempty"`
 	IsIstioEnabled            *bool           `json:"is_istio_enabled,omitempty"   `
 	WorkerNodePool            *WorkerNodePool `json:"worker_node_pool,omitempty"  validate:"nonzero" `
 	MasterNodePool            *MasterNodePool `json:"master_node_pool,omitempty"  validate:"nonzero" `
